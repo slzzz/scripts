@@ -8,4 +8,5 @@ function default(){
 }
 
 default
-sudo passwd postgres
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
