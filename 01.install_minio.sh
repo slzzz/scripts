@@ -1,7 +1,6 @@
 #!/bin/bash
 # saner programming env: these switches turn some bugs into errors
-set -o errexit -o pipefail -o noclobber -o nounset
-
+set -o errexit -o pipefail -o noclobber
 # if [ "$#" -ne 3 ]; then
 #     echo "You must enter exactly 3 command line arguments"
 # fi
@@ -32,7 +31,7 @@ MINIO_ACCESS_KEY=Modelo
 MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
 EOF
 
-sudo tee /etc/systemd/system/minio.service  <<EOF 
+sudo tee /etc/systemd/system/minio.service >/dev/null   <<EOF 
 [Unit]
 Description=MinIO
 Documentation=https://docs.min.io
@@ -68,3 +67,5 @@ WantedBy=multi-user.target
 EOF
 sudo systemctl enable minio.service
 sudo systemctl start minio.service
+
+echo "Minio passwd is ${MINIO_SECRET_KEY}"
