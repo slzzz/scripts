@@ -62,9 +62,8 @@ SendSIGKILL=no
 
 [Install]
 WantedBy=multi-user.target
-
-# Built for ${project.name}-${project.version} (${project.name})
 EOF
+
 sudo systemctl enable minio.service
 sudo systemctl start minio.service
 
