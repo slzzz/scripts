@@ -12,7 +12,7 @@ function getInfo(){
     id
 }
 
-sudo curl https://s3.cn-northwest-1.amazonaws.com.cn/modelo.static.files/minio --output --output  /usr/local/bin/minio
+sudo curl https://s3.cn-northwest-1.amazonaws.com.cn/modelo.static.files/minio --output  /usr/local/bin/minio
 sudo chmod +x /usr/local/bin/minio
 getInfo
 read -p "Enter Path: " Path
