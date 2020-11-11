@@ -21,7 +21,7 @@ if ! [ -d ${Path} ];then sudo mkdir -pv ${Path};sudo chown -R ${User}: ${Path};f
 
 MINIO_SECRET_KEY=`head /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 20`
 
-cat <<EOT >> /etc/default/minio
+sudo tee /etc/default/minio >/dev/null <<EOF 
 # Volume to be used for MinIO server.
 MINIO_VOLUMES="${Path}"
 # Use if you want to run MinIO on a custom port.
@@ -30,9 +30,9 @@ MINIO_OPTS="--address :9000"
 MINIO_ACCESS_KEY=Modelo
 # Secret key of the server.
 MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
-EOT
+EOF
 
-cat <EOT >> /etc/systemd/system/minio.service
+sudo tee /etc/systemd/system/minio.service  <<EOF 
 [Unit]
 Description=MinIO
 Documentation=https://docs.min.io
@@ -65,6 +65,6 @@ SendSIGKILL=no
 WantedBy=multi-user.target
 
 # Built for ${project.name}-${project.version} (${project.name})
-EOT
+EOF
 sudo systemctl enable minio.service
 sudo systemctl start minio.service
