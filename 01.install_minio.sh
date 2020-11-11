@@ -2,9 +2,9 @@
 # saner programming env: these switches turn some bugs into errors
 set -o errexit -o pipefail -o noclobber -o nounset
 
-if [ "$#" -ne 3 ]; then
-    echo "You must enter exactly 3 command line arguments"
-fi
+# if [ "$#" -ne 3 ]; then
+#     echo "You must enter exactly 3 command line arguments"
+# fi
 
 function getInfo(){
     echo ==========================================
@@ -13,7 +13,7 @@ function getInfo(){
     id
 }
 
-curl https://dl.min.io/server/minio/release/linux-amd64/minio --output  /usr/local/bin/minio
+sudo curl https://dl.min.io/server/minio/release/linux-amd64/minio --output  /usr/local/bin/minio
 getInfo
 read -p "Enter Path: " Path
 read -p "Enter User: " User
@@ -65,6 +65,6 @@ SendSIGKILL=no
 WantedBy=multi-user.target
 
 # Built for ${project.name}-${project.version} (${project.name})
-
-systemctl enable minio.service
-systemctl start minio.service
+EOT
+sudo systemctl enable minio.service
+sudo systemctl start minio.service
