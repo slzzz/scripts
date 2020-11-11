@@ -48,7 +48,7 @@ Group=${User}
 EnvironmentFile=/etc/default/minio
 ExecStartPre=/bin/bash -c "if [ -z \"${MINIO_VOLUMES}\" ]; then echo \"Variable MINIO_VOLUMES not set in /etc/default/minio\"; exit 1; fi"
 
-ExecStart=/usr/local/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
+ExecStart=/usr/local/bin/minio server \$MINIO_OPTS \$MINIO_VOLUMES
 
 # Let systemd restart this service always
 Restart=always
