@@ -17,7 +17,8 @@ sudo chmod +x /usr/local/bin/minio
 getInfo
 read -p "Enter Path: " Path
 read -p "Enter User: " User
-if ! [ -d ${Path} ];then sudo mkdir -pv ${Path};sudo chown -R ${User}: ${Path};fi
+if ! [ -d ${Path} ];then sudo mkdir -pv ${Path};sudo chown -R ${User}: ${Path} && sudo chmod u+rxw  ${Path} ;fi
+
 
 MINIO_SECRET_KEY=`head /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 20`
 
