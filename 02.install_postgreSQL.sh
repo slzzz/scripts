@@ -10,3 +10,11 @@ function default(){
 default
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
+
+
+# create user and grant permission
+# CREATE USER user WITH PASSWORD 'xxxx';
+# GRANT ALL PRIVILEGES ON DATABASE dbname TO user;
+# default config /etc/postgresql/9.6/main/pg_hba.conf
+# host    all             all             172.0.0.1/24                md5
+
